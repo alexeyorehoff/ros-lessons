@@ -141,6 +141,9 @@ target_link_libraries(${PROJECT_NAME}_server ${catkin_LIBRARIES})
 add_executable(${PROJECT_NAME}_client src/det_solver_client.cpp)
 target_link_libraries(${PROJECT_NAME}_client ${catkin_LIBRARIES})
 
+add_executable(${PROJECT_NAME}_subscriber src/det_solver_subscriber.cpp)
+target_link_libraries(${PROJECT_NAME}_subscriber ${catkin_LIBRARIES})
+
 
 #add_dependencies(${PROJECT_NAME}_server ${PROJECT_NAME}_server_gencpp)
 
