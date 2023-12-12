@@ -7,12 +7,7 @@
         <arg name="gui" value="true"/>
     </include>
 
-    <!-- Запуск узла моделирования робота -->
-    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" output="screen"
-          args="-urdf -param robot_description -model my_turtlebot3 -x X_COORDINATE -y Y_COORDINATE -z Z_COORDINATE" />
-
     <!-- Запуск узла SLAM -->
-    <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch" />
-
-
+    <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch"/>
+    
 </launch>
