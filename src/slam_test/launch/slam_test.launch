@@ -1,10 +1,18 @@
 <launch>
     <master auto="start"/>
-    <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>cd
+    <arg name="model" default="env TURTLEBOT3_MODEL" doc="model type [burger, waffle, waffle_pi]"/>cd
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="src/slam_test/src/test_world/test_world"/>
+        <arg name="world_name" value="$(env HOME)/ros-lessons/src/slam_test/src/test_world"/>
         <arg name="paused" value="false"/>
         <arg name="gui" value="true"/>
     </include>
-    
+
+    <!-- Запуск узла моделирования робота -->
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" output="screen"
+          args="-urdf -param robot_description -model my_turtlebot3 -x X_COORDINATE -y Y_COORDINATE -z Z_COORDINATE" />
+
+    <!-- Запуск узла SLAM -->
+    <include file="$(find turtlebot3_slam)/launch/turtlebot3_slam.launch" />
+
+
 </launch>
